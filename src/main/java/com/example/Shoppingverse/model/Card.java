@@ -27,6 +27,7 @@ public class Card {
 
     Data validTill;
 
+    @Enumerated(EnumType.STRING)
     CardType cardType;
 
     @ManyToOne

@@ -32,6 +32,7 @@ public class Customer {
     @Column(unique = true)
     String mobile;
 
+    @Enumerated(EnumType.STRING)
     Gender gender;
 
     @OneToOne(mappedBy = "customer",cascade = CascadeType.ALL)

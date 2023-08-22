@@ -24,6 +24,7 @@ public class Product {
     int price;
     int availbleQuantity;
 
+    @Enumerated(EnumType.STRING)
     ProductCatagory productCatagory;
 
     ProductStatus productStatus;
