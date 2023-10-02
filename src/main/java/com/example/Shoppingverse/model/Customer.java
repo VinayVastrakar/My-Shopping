@@ -2,12 +2,8 @@ package com.example.Shoppingverse.model;
 
 import com.example.Shoppingverse.Enum.Gender;
 import jakarta.persistence.*;
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import lombok.experimental.FieldDefaults;
-import org.springframework.web.context.support.GenericWebApplicationContext;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +13,8 @@ import java.util.List;
 @AllArgsConstructor
 @Data
 @FieldDefaults(level = AccessLevel.PRIVATE)
-@Table(name = "customer")
+@Builder
+@Table(name="customer")
 public class Customer {
 
     @Id
@@ -27,10 +24,10 @@ public class Customer {
     String name;
 
     @Column(unique = true)
-    String emailid;
+    String emailId;
 
     @Column(unique = true)
-    String mobile;
+    String mobNo;
 
     @Enumerated(EnumType.STRING)
     Gender gender;
@@ -39,8 +36,9 @@ public class Customer {
     Cart cart;
 
     @OneToMany(mappedBy = "customer",cascade = CascadeType.ALL)
-    List<Card> cards= new ArrayList<>();
+    List<Card> cards = new ArrayList<>();
 
-    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
-    List<OrderEntity> orders= new ArrayList<>();
+    @OneToMany(mappedBy = "customer",cascade = CascadeType.ALL)
+    List<OrderEntity> orders = new ArrayList<>();
+
 }

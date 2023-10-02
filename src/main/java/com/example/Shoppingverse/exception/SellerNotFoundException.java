@@ -1,4 +1,10 @@
 package com.example.Shoppingverse.exception;
 
-public class SellerNotFoundException extends Throwable {
+import com.example.Shoppingverse.repository.SellerRepository;
+
+public class SellerNotFoundException extends RuntimeException{
+
+    public SellerNotFoundException(String message){
+        super(message);
+    }
 }

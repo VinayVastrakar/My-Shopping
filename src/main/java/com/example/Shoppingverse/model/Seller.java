@@ -1,11 +1,7 @@
 package com.example.Shoppingverse.model;
 
-import com.example.Shoppingverse.Enum.Gender;
 import jakarta.persistence.*;
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import lombok.experimental.FieldDefaults;
 
 import java.util.ArrayList;
@@ -16,21 +12,22 @@ import java.util.List;
 @AllArgsConstructor
 @Data
 @FieldDefaults(level = AccessLevel.PRIVATE)
-@Table(name = "seller")
+@Table(name="seller")
+@Builder
 public class Seller {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     int id;
+
     String name;
 
-    @Column(unique = true)
-    String emailid;
+    @Column(unique = true,nullable = false)
+    String emailId;
 
-    @Column(unique = true)
+    @Column(unique = true,nullable = false)
     String panNo;
 
     @OneToMany(mappedBy = "seller",cascade = CascadeType.ALL)
-    List<Product> product= new ArrayList<>();
-
+    List<Product> products = new ArrayList<>();
 }

@@ -5,12 +5,8 @@ import com.example.Shoppingverse.dto.response.CustomerResponseDto;
 import com.example.Shoppingverse.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/customer")
@@ -21,7 +17,8 @@ public class CustomerController {
 
     @PostMapping("/add")
     public ResponseEntity addCustomer(@RequestBody CustomerRequestDto customerRequestDto){
-        CustomerResponseDto response= customerService.addCustomer(customerRequestDto);
+
+        CustomerResponseDto response = customerService.addCustomer(customerRequestDto);
         return new ResponseEntity(response, HttpStatus.CREATED);
     }
 }

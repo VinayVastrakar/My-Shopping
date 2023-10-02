@@ -1,10 +1,7 @@
 package com.example.Shoppingverse.model;
 
 import jakarta.persistence.*;
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import lombok.experimental.FieldDefaults;
 
 @Entity
@@ -12,7 +9,8 @@ import lombok.experimental.FieldDefaults;
 @AllArgsConstructor
 @Data
 @FieldDefaults(level = AccessLevel.PRIVATE)
-@Table(name = "item")
+@Table(name="item")
+@Builder
 public class Item {
 
     @Id
@@ -32,5 +30,4 @@ public class Item {
     @ManyToOne
     @JoinColumn
     Product product;
-
 }

@@ -2,18 +2,18 @@ package com.example.Shoppingverse.model;
 
 import com.example.Shoppingverse.Enum.CardType;
 import jakarta.persistence.*;
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import lombok.experimental.FieldDefaults;
+
+import java.util.Date;
 
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
 @FieldDefaults(level = AccessLevel.PRIVATE)
-@Table(name = "card")
+@Table(name="card")
+@Builder
 public class Card {
 
     @Id
@@ -25,7 +25,7 @@ public class Card {
 
     int cvv;
 
-    Data validTill;
+    Date validTill;
 
     @Enumerated(EnumType.STRING)
     CardType cardType;

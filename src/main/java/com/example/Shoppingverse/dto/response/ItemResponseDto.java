@@ -1,6 +1,6 @@
 package com.example.Shoppingverse.dto.response;
 
-import com.example.Shoppingverse.Enum.Gender;
+import com.example.Shoppingverse.Enum.ProductCatagory;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
@@ -9,13 +9,13 @@ import lombok.experimental.FieldDefaults;
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Builder
-public class CustomerResponseDto {
+public class ItemResponseDto {
 
-    String name;
+    String itemName;
 
-    String emailId;
+    int itemPrice;
 
-    String mobNo;
+    int quantityAdded;
 
-    Gender gender;
+    ProductCatagory category;
 }

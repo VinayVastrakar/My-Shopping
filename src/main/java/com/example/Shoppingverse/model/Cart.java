@@ -15,7 +15,7 @@ import java.util.List;
 @AllArgsConstructor
 @Data
 @FieldDefaults(level = AccessLevel.PRIVATE)
-@Table(name = "cart")
+@Table(name="cart")
 public class Cart {
 
     @Id
@@ -28,7 +28,6 @@ public class Cart {
     @JoinColumn
     Customer customer;
 
-
-    @OneToMany(mappedBy = "cart", cascade = CascadeType.ALL)
-    List<Item> items= new ArrayList<>();
+    @OneToMany(mappedBy = "cart",cascade = CascadeType.ALL)
+    List<Item> items = new ArrayList<>();
 }

@@ -16,15 +16,16 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+
 @RestController
 @RequestMapping("/cart")
 public class CartController {
 
     @Autowired
-    CartService cartService;
+    ItemService itemService;
 
     @Autowired
-    ItemService itemService;
+    CartService cartService;
 
     @Autowired
     CartRepository cartRepository;
@@ -33,12 +34,12 @@ public class CartController {
     public ResponseEntity addToCart(@RequestBody ItemRequestDto itemRequestDto){
 
         try{
-            Item item= itemService.createItem(itemRequestDto);
-            CartResponseDto cartResponseDto= cartService.addItemToCart(itemRequestDto , item);
-            return new ResponseEntity(cartResponseDto, HttpStatus.CREATED);
+            Item item = itemService.createItem(itemRequestDto);
+            CartResponseDto cartResponseDto = cartService.addItemToCart(itemRequestDto,item);
+            return new ResponseEntity(cartResponseDto,HttpStatus.CREATED);
         }
         catch (Exception e){
-            return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+            return new ResponseEntity(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
     }
 
@@ -46,13 +47,11 @@ public class CartController {
     public ResponseEntity checkoutCart(@RequestBody CheckoutCartRequestDto checkoutCartRequestDto){
 
         try{
-            OrderResponseDto response= cartService.checkoutCart(checkoutCartRequestDto);
-            return new ResponseEntity(response, HttpStatus.CREATED);
+            OrderResponseDto response = cartService.checkoutCart(checkoutCartRequestDto);
+            return new ResponseEntity(response,HttpStatus.CREATED);
         }
         catch (Exception e){
-            return new ResponseEntity(e.getMessage(), HttpStatus.BAD_REQUEST);
+            return new ResponseEntity(e.getMessage(),HttpStatus.BAD_REQUEST);
         }
     }
-
-
 }
